@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} Weather</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Video Background -->
+    <video autoplay muted playsinline preload id="bg-video">
+        <source src="{{ url_for('static', filename='videos/' + video_file) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="results">
+        <h1>{{ title }} Weather</h1>
+
+        <!-- Main Weather Info -->
+        <div class="main-weather">
+            <div class="weather-icon">
+                <img src="{{ current_icon }}" alt="{{ status }}">
+            </div>
+            <div class="weather-info">
+                <p id="main-temp">{{ temp }} &deg;{{ unit }}</p>
+                <p>{{ status }}</p>
+                <p>Feels like {{ feels_like }} &deg;{{ unit }}</p>
+                <p>Low: {{ low_temp }} &deg;{{ unit }}</p>
+                <p>Humidity: {{ humidity }}%</p>
+                <p>Wind Speed: {{ wind_speed }} mph</p> <!-- Wind speed now displayed in mph -->
+                <p>Precipitation: {{ precipitation }}</p> <!-- Added precipitation display -->
+                <p>Latitude: {{ latitude }} / Longitude: {{ longitude }}</p>
+            </div>
+        </div>
+
+        <!-- Temperature Unit Toggle -->
+        <form action="/weather" method="get" class="unit-toggle-form">
+            <input type="hidden" name="city" value="{{ city }}" />
+            <input type="hidden" name="unit" value="{{ 'F' if unit == 'C' else 'C' }}" />
+            <button type="submit" class="unit-toggle-button">{{ 'Switch to Celsius' if unit == 'F' else 'Switch to
+                Fahrenheit' }}</button>
+        </form>
+
+        <!-- 5-Day Forecast -->
+        <h2>5-Day Forecast</h2>
+        <div class="forecast">
+            {% for day in daily_forecast %}
+            <div class="forecast-day">
+                <p><strong>{{ day.weekday }}</strong></p>
+                <img src="{{ day.icon }}" alt="{{ day.description }}">
+                <p>High: {{ day.temp }} &deg;{{ unit }}</p>
+                <p>Low: {{ day.low_temp }} &deg;{{ unit }}</p>
+                <p>{{ day.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Back to Home Link -->
+        <div class="home-btn">
+            <a href="{{ url_for('index') }}" class="home-btn">Back to Home</a>
+        </div>
+    </div>
+</body>
+
+</html>

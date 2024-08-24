@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Weather Conditions</title>
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Video Background -->
+    <video autoplay muted playsinline preload id="bg-video">
+        <source src="{{ url_for('static', filename='videos/sunny5.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="results">
+        <h1>Get Weather Conditions</h1>
+        <form action="/weather">
+            <input type="text" name="city" id="city" placeholder="Enter a City" />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

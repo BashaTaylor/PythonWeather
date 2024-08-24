@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: contain; /* Ensure the entire video is visible */
+}
+
+body {
+    color: whitesmoke;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.7rem;
+    background: transparent; /* Transparent background to show the video */
+    /* opacity: 0.85; */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Ensure the background is behind other elements */
+}
+
+
+input, button {
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+h2 {
+    margin-top: 15px;
+}
+
+.results {
+    text-align: center;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 850px;
+    margin-top: 15px;
+}
+
+.weather-icon img {
+    width: 100px; /* Adjust the size of the weather icon */
+    height: 100px;
+}
+
+.weather-info p {
+    margin: 5px 0;
+}
+
+.unit-toggle-button {
+    padding: 8px 12px; /* Smaller padding for a smaller button */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    border-radius: 8px; /* Slightly smaller border-radius */
+    background-color: #4189f6; /* Example button background color */
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.unit-toggle-button:hover {
+    background-color: #316fc4; /* Darken on hover */
+}
+
+/* Media query for tablets (width less than 768px) */
+@media (max-width: 768px) {
+    .results {
+        padding: 30px 20px 50px 20px; /* Reduce padding */
+        margin-top: 30px; /* Reduce top margin */
+    }
+    
+    body {
+        font-size: 1.1rem; /* Adjust font size for readability */
+    }
+    
+    .forecast {
+        grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
+        gap: 10px; /* Maintain gap */
+    }
+}
+
+/* Media query for mobile phones (width less than 480px) */
+@media (max-width: 480px) {
+    .results {
+        padding: 20px 15px 40px 15px; /* Further reduce padding */
+        margin-top: 20px; /* Further reduce top margin */
+    }
+    
+    body {
+        font-size: 1.1rem; /* Further adjust font size */
+    }
+    
+    .forecast {
+        grid-template-columns: 1fr; /* Change to 1 column */
+        gap: 10px; /* Maintain gap */
+    }
+}
+
+.forecast {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Create a grid with 5 equal columns */
+    gap: 8px; /* Add some space between the columns */
+    margin-top: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjusts to screen size */
+}
+
+.forecast-day {
+    background-color: rgba(24, 210, 18, 0.8); /* Slightly transparent green */
+    padding: 22px 10px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.forecast-day:hover {
+    background-color: rgba(24, 210, 18, 1); /* Full opacity on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    transition: all 0.3s ease;
+}
+
+.main-weather {
+    margin-bottom: 20px;
+}
+
+.home-btn {
+    margin-top: 30px;
+    color: blue;
+    font-size: 20px;
+}
+
+#main-temp {
+    font-size: 54px;
+    font-weight: bold;
+    color: whitesmoke;
+}
+

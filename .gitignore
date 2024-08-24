@@ -1,0 +1,4 @@
+.venv
+#never share the file below
+.env
+__pycache__
